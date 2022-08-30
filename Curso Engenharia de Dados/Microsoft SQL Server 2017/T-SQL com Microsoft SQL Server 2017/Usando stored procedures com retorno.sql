@@ -74,3 +74,47 @@ SELECT
 	@NUMERO_NOTAS,
 	@FATURAMENTO
 
+
+-- Construa uma SP (nome NumNotasSP) cujos parâmetros são uma data, passada como valor, e o número de notas, passado como referência. 
+-- Depois, faça um script onde, na variável @NUMNOTAS, some as notas do dia 01/01/2017 e 02/01/2017.
+-- Dica: Na SP, crie uma variável auxiliar e some da variável que é passada como referência.
+
+-- Criando a SP
+CREATE PROCEDURE NumNotasSP
+	@DATA AS DATE,
+	@NUMNOTAS AS INT OUTPUT
+AS
+BEGIN
+	DECLARE @AUX AS INT
+
+	SELECT
+		@AUX = COUNT(*)
+	FROM
+		[NOTAS FISCAIS]
+	WHERE
+		DATA = @DATA
+
+	SET @NUMNOTAS = @NUMNOTAS + @AUX
+END
+
+-- Declarando as variaveis
+DECLARE @DATA DATE,
+		@NUMNOTAS INT
+
+-- Atribuindo um valor para as variaveis
+SET @DATA = '20170101'
+SET @NUMNOTAS = 0
+
+-- Executando por primeira vez a SP
+EXEC NumNotasSP @DATA = @DATA, @NUMNOTAS = @NUMNOTAS OUTPUT
+
+-- Trocando a data para executar novamente e obter a soma dos dois dias
+SET @DATA = '20170102'
+EXEC NumNotasSP @DATA = @DATA, @NUMNOTAS = @NUMNOTAS OUTPUT
+
+-- Printando o valor total de notas nesse dia
+PRINT @NUMNOTAS
+
+
+-- Para alterar um procedure é necessário utilizar o comando ALTER PROCEDURE.
+
