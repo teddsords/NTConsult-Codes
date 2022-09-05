@@ -1,0 +1,22 @@
+-- Recuperando Backups
+-- * Precisamos entender o tipo e recuperação a ser efetuada
+-- Uma transação é salva no backup dependendo do seu status
+	-- A transação está sendo executada
+	-- A transação está ativa
+	-- A transação está inativa
+-- Saber o estado dos meus backcups
+-- RESTOR VERIFYONLY FROM DISK = '<BACKUP FILE NAME>' WITH CHECKSUM
+
+-- Antes de efetuar a restração devemos verificar o estado de nossos backups
+-- RESTORE HEADERONLY FROM DISK = '<FILE PATH AND NAME>'
+-- Colunas mais importantes:
+	-- BackupType: Tipo de Backup (1. Inicial, 2. Log, 5. Diferencial)
+	-- Position: Ordem do backup
+	-- BackupStartDate: Data inicial do backup
+	-- BackupFinishDate: Data final do backup
+
+-- O caomando para recuperação do Backup
+-- RESTORE DATABASE <DB NAME> FROM DISK = '<FILE PATH AND NAME>' WITH FILE = <BACKUP NUM>, RECOVERY/NORECOVERY
+	-- <BACKUP NUM>: número do backup conforme tabela observada no comando RESTORE HEADERONLY
+	-- RECOVERY: Usamos este opção quando não vamos mais ler outros arquivos backup
+	-- NORECOVERY: Usamos quando vamos ler mais arquivos backup

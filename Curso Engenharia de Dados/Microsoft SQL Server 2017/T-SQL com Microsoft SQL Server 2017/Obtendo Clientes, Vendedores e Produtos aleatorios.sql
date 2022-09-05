@@ -38,6 +38,13 @@ SELECT @CLIENTE_ALEATORIO
 
 -- Pegando o vendedor aleatorio
 
+-- Declarando variaveis 
+DECLARE @VENDEDOR_ALEATORIO VARCHAR(12),
+		@VALOR_INICIAL INT,
+		@VALOR_FINAL INT,
+		@ALEATORIO INT,
+		@CONTADOR INT
+
 -- Setando valores das variaveis
 SET @VALOR_INICIAL = 1
 SET @CONTADOR = 1
