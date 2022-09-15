@@ -1,0 +1,155 @@
+VANTAGENS DE UM DATAWAREHOUSE
+* Integração de diversas fontes
+* Implementação das regras de negócio
+* Limpeza de dados
+* Análise ao longo do tempo
+
+COMO PROJETAR UM DATAWAREHOUSE
+* O que eu quero analisar?
+	- Que tipo de informação eu preciso ter
+	- Se chama de indicador, medida ou variável
+* Como eu quero analisar?
+	- De que maneira eu quero ver aquela informação
+	- Aquilo que vai identificar a variável vai ser a dimensão
+
+Quando um inidicador é atrelado a outra informação, este passa a ter sentido. 
+Por exemplo: se falarmos que está  20 graus pode ser não ter o contexto completo. No entanto 20 graus no
+verão do RJ, podemos dizer que está frio (anormal) ou 20 graus no inverno da Inglaterra, podemos dizer que está quente (anormal).
+
+MATRIZ DIMENSÃO X INDICADOR
+Nas linhas:
+	- Indicador: Qual a informação quero ver (vendas, Custos, Lucro, etc..)
+Nas colunas: 
+	- Dimensão: Como quero ver a informa~ção (Cliente, Empresa, Tempo, etc..)
+Por exemplo: 
+* Vendas posso ver por Cliente e Produto
+* Custo Materia Prima posso ver por Produto (não por  cliente)
+
+O conjunto dos indicadores que possuem os mesmos cruzamentos resultarão em tabelas chamadas "tabelas de fato"
+As chaves primárias serão as dimensões
+
+DETALHES DE UMA DIMENSÃO
+Uma dimensão é composta por hierarquia, a qual é composta por nível. E os níveis podem possuir ou não atributos.
+Para determinar ass dimensões é necessário fazer a relação entre as entidades da dimensão (1:1, 1:N, N:M). ao obter estas relações
+podemos chegar nos grupos que se relacionam entre se, para criar o grupo da dimensão em específico. 
+Por exemplo, temos a Dimesão cliente que consta com o Estado, Cidade, Cliente e Segmento. Essa dimensão consta com 2 hierarquias (Geográfica e segmento)
+e 4 níveis (Cliente, Cidade, Estado e Segmento)
+
+MODELO ESTRELA (STAR SCHEMA)
+Toda dimensão começa num único nível
+Normalmente as dimensões são chamadas pelo nível mais baixo da própria dimensão
+O modelo estrela é quando temos as tabelas das dimensões (tendo todas as relações dos níveis) e a de fato.
+O modelo estrela é desnormalizado. 
+O banco de dados normalizado é aquele que a redundancia de dados é quase nula. Já aquele desnomalizado, as informações podem se repetir.
+
+MODELO FLOCO DE NEVE (SNOW FLAKE SCHEMA)
+Nesse modelo a dimensão é representada com uma tabela pra cada nível e assim fazendo a relação entre os níveis.
+Este modelo é normalizado
+
+DIFERENÇA ENTRE HIERARQUIA E ATRIBUTO
+Dois níevis de uma dimensão podem ser representados tanto por uma hierarquia quanto por um atributo.
+  Modelo Floco de Neve
+	Dois níveis de uma dimensão, num modelo Floco de Neve, podem ser representados tanto por uma hierarquia quanto por um atributo
+	Tanto faz que modelagem escolher (Modelo Foco de Neve)
+	* Algumas dicas nos dão uma pista de que tipo de modelagem usar.
+	    - Poucos valores ou valores sem códigos --> Atributo
+	    - Vaores únicos --> Atributo
+
+
+DIMENSÃO IRREGULAR
+A dimensão irregular é quando de  um nível folha a um nível superior, temos diferentes passo a chegar ao topo, dependendo do ramo da dimensão a ser analisado.
+Quando temos uma dimensão irregular, numa tabela Esquerda/Direita, é desejável criar os atributos Esquerda/Direita e nível
+Os atributos Esquerda/direita são inteiros que identificam cada membro da dimensão
+O atributo nível identifica quantos níveis abaixo na hierarquia o membro da dimensão está localizado
+Estes abributos auxiliam na licalização de membros da dimensão
+Para criar a numeração Esquerda/Direita temos que descer até as folhaa da árvore, colocando o valor no lado esquerdo. Uma vez chegado 
+nas folhas verificamos se existem irmãos e aí começamos a colocar o valor de direita. uma vez finalizadas as folhas subimos e verificamos se há irmãos.
+Repetindo esta ação até terminar a tabela.
+O uso de dimensões irregulares é usado mais em dimensões onde não sabemos quantos níveis teremos e nem como serão as relações entre os seus membros.
+Um bom exemplo é um plano de contas contábil
+
+
+DIEMNSÃO TEMPO
+Num sistema transacional teriamos uma ocorrência e num sistema gerencial teriamos varias ocorrências
+pro sistema transacional o tempo que importa é o tempo atual. Num datawarehouse, o tempo é uma das dimensões mais importantes
+* Granularidade e periocidade
+	- Granularidade: é o menor grão da dimensão tempo associado a uma ocorrência
+	- Periodicidade: é o menor grão da dimensão onde eu faço as capturas do tempo
+ Por exemplo a medição de energia eleétrica tem uma granularidade diferente da periodicidade. Pois a periodicidade
+é de segundo em segundo, mas a granularidade é de 1 mês, já que é o momento quando recebemos a nossa conta de luz.
+
+Podemos representar a dimensão tempo da maesma maneira que as outras dimensões (Modelo estrela, Floco d e Neve e tabela Pai e Filho)
+A periodicidade e granularidade estão associadas a medida.
+Num mesmo modelo gerencial podemos ter indicadores com granularidadese periodicidades diferentes.
+ Venda de um produto (granularidade diária)
+ Custo de mão de obra (granularidade mensal)
+As medidas de granularidade diferentes devem ficar em tabelas de fato diferentes
+
+
+EXTRACT, TRANSFORM, LOAD - ETL
+Transoformação é quando há alguma modificação no dado. Por exemplo no sistema transacional podemos ter a cidade listada como
+S. Paulo, Sao Paulo, SP e São Paulo... Mas todas elas devem ser transformadas para São Paulo antes de passarem pro Data Warehouse
+* A técnica de Lookup consiste em criarmos um código sequencial númerico para os membros da dimensão. Ou seja, o dado
+que está vindo do sistema transacional não tem código, mass dentro do DW precisamos codificá-lo para facilitiar a sua correta identificação.
+* A técnica Union consiste em juntar os dados de várias tabelas numa única tabela
+* A técnica Union Distinct consiste em juntar os dados, sem repetir os dados que há mais de uma ocorrência.
+* Funções de transformação de dados, por exemplo se temos um campo de localização com a cidade e o estado, mas no DW temos os campos separados, então
+podemos utilizar uma função que separa a string. Separando assim cidade e estado. Por exemplo: "Rio de Janeiro - RJ" seria transformado em 
+"Rio de Janeiro" (cidade) e "RJ" (estado).
+* Funções de datas: Mês da data, ano da data, dia da data, hora da data, mudança de formato da data, soma ou subtração de datas.
+* Funções de strings: concatenar, dividir, substituir, formato de saída, tirar brancos
+* Funções númericas: equações matemáticas, arredondamento, transformação entre unidades númericas
+Em muitos casos precisamos criar tabelas temporárias para efetuar as transformações. Elas são chamadas de ODS (Operational Data Storage).
+Por exemplo se temos dados que são diários, mas no DW vai como mensal. Vamos escrevendo na ODS e chegado o momento calculamos o valor e logo escrevemos no DW
+
+
+OLAP
+Os OLAPs possuem uma estrutura diferente. Um OLAP não apresenta tabelas, campos ou registros e, sim, duas grandes estruturas.
+Dentro de um OLAP, não possuímos a representação delas no formato de tabelas, mas como fórmulas matemáticas.
+  - Por exemplo: Suco = Suco de Laranja + Suco de Maça
+Para a construção de uma tabela OLAP temos que colocar uma dimensão como colunas e outra como as linhas. Logo em seguida pegamos a tabela Fato e vamos preenchendo de acordo
+com as linhas. Chegado o momento de preencher a linha com a maior hierarquia fazemos a soma de todos os atributos dessa dimensão. Ao fazer isto chama-se de consolidar a
+tabela.
+O esforço computacional do OLAP para fornecer informação operacional quanto gerencial é o mesmo. Não precisamos realizar somas, table scan e juntar tabelas.
+Em uma tabela relacional, os dados estão organizados em tabelas e se quisermos fazer esse movimento de inversão para explorar melhor as informações
+- conhecido como "pivotear" (Inverter a tabela, coluna vira linha e linha vira coluna) tabela - teremos um esforço muito grande, diferentemente de quando utilizamos o OLAP.
+Costumamos chamar de CUBO a base OLAP
+
+
+TIPOS DE OLAPs
+Os OLAPs são maiores que os DW porque o seu crescimento é exponencial. Então tendo muitas dimensões o OLAP irá crescer rapdidmente, no entanto nem sempre todas as 
+combinações irão acontecer. 
+Para isso temos a: 
+	 esparsividade = # de comb reais/# de comb possiveis. 
+A esparsividade mais perto de 1: mais denso será o cubo OLAP
+No entanto, é interessante separar os OLAPs por assuntos, sendo inviável utilizar um único OLAP para modelar todo o data warehouse. 
+Logo, teremos um OLAP para vendas, outro para a contabilidade e assim por diante.
+Não há problema de segmentá-los porque os conceitos estão unificados.
+Há três tipos de OLAPs:
+	- MOLAP: Multidimensional OLAP
+		* Os Molaps calculam e gravam todos os cruzamentos possíveis dentro do disco e estão prontos para uso. 
+		   Isso significa que os Molaps possuem a melhor performance dentre os outros tipos existentes, porém construí-los demanda tempo.
+	- HOLAP: Hybrid OLAP
+		* Os Híbridos ou Holaps fazem uma mixagem: algumas informações são mantidas na tabela de fato
+		   e outras são calculadas e consolidadas, portanto o tempo de cálculo e cruzamentos que ficarão no disco será menor.
+	- ROLAP: Relational OLAP
+		* Os Rolaps utilizam todas as informações do data warehouse no momento da consulta,
+		   e apenas armazena em sua estrutra os relacionamentos lógicos entre os membros da dimensão.
+
+
+RELATÓRIOS ANALÍTICOS
+O timing para entregar uma informação ao usuário é muito importante, os relatórios devem ser elaborados e entregues com rapidez.
+Devemos prover ferramentas ao usuário de forma que ele mesmo possa construir seus relatórios, com isso, os profissionais
+de tecnologia ficam responsáveis apenas por manter o data warehouse e os OLAPs íntegros e com dados corretos.
+É importante analisar qual é das pessoas que usam as ferramentas de BI. Podemos classificar os usuários em três núcleos:
+ * Análises Ad-Hoc:
+	- As Análises Ad-Hoc são completamente abertas, ou seja, você fornece o OLAP para o usuário de forma livre, 
+	e é ele quem criará o formato de saída dos relatórios e definirão os filtros ou indicadores.
+ * Análises Padronizadas:
+	- As análises padronizadas são perfeitas para o usuário que não querem se perder com o OLAP, mas desejam possuir flexibilidade. 
+	Existem alguns exemplos clássicos de análises padrão, como ranking, ou seja, ordenar algo de acordo com um critério. Quem decide isso será o usuário.
+ * Análises Customizadas:
+	- Análises customizadas são para o usuário que não está interessado em acessar o dado "cru", sem interpretações,
+	 e sim acessar a informação da forma mais inalterada possível, com relatórios bem elaborados que contenham gráficos em pizza ou em barra, 
+	além de outros elementos visuais.
+
