@@ -153,3 +153,18 @@ de tecnologia ficam responsáveis apenas por manter o data warehouse e os OLAPs 
 	 e sim acessar a informação da forma mais inalterada possível, com relatórios bem elaborados que contenham gráficos em pizza ou em barra, 
 	além de outros elementos visuais.
 
+
+VARIAÇÕES DO BI
+* Data Mining:
+	- Com a criação dos Data warehouses nas empresas, passou a existir uma massa de dados gigantesca com informações antigas, e por meio de métodos estatísticos podemos 	tentar prever comportamentos de uma determinada informação no futuro.
+
+	-Existem diversas técnicas da data minning que utilizam métodos matemáticos extremamente complexos, como redes neurais, teoria de jogos, análise estatística e de 		regressão. A ideia é agrupar a informação em determinados comportamentos parecidos e identificar padrões.
+
+* Balance Scorecard:
+	- Como o painel de cockpit de carros ou de aviões que possuem indicadores específicos para acompanhar valores.
+	- Suponhamos que se faça uma análise estratégica da sua empresa, onde ela quer chegar no futuro, sua missão e visão. Para criar a missão e visão de cada empresa 	utilizamos um matrix SWOT, em que é analisada os desafios e oportunidades futuras e com isso se chega a um conjunto de 20 à 15 indicadores chave da empresa, que 	chamamos de KPI's Key Performance Indicators.
+
+* Big Data: 
+	- Que nada mais é do que estipular como uso de uma das fontes do Data warehouse a internet.
+	- Qual informação importante para minha empresa está na internet? Aquela que circula entre as redes sociais, dados na nuvem e tudo o mais que trafega no cyberespaço 	que tenha relação com a empresa, o produto produzido por ela ou uma campanha específica que foi lançada.
+	- Existe um software livre chamado Hadoop, que consegue capturar massas de dados da internet usando determinados critérios. A partir de um método chamado map reduce, 	conseguimos fazer consultas específicas de informações não estruturadas (como textos, frases) em que o meu produto esteja presente. Feito isso, conseguimos estruturar 	esses dados dentro de um data warehouse, podendo assim, combinar a informação da internet com a interna da empresa e exibi-la através de relatórios.
