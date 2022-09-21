@@ -1,0 +1,97 @@
+O comando: ps nos mostra quais são os processos que estão rodando atualmente, só mostra os que estão rodando no terminal
+
+O comando: ps -e mostra todos os processos que estão rodando na máquina
+
+O comando: kill <process ID> vai matar/encerrar o processo com esse ID
+
+O comando: kill -9 <process ID> vai matar o processo sem dar uma chance dele destravar ou fazer alguma coisa
+
+O comando: ps -ef mostra mais detalhes sobre os processos que estão rodando
+
+O comando: ps -ef | grep <palavra a ser procurada> irá filtrar os resultados do comando e mostrando assim resultados que contém a palavra enviada para ser procurada
+
+O modificador: | grep <palavra chave> pode ser utilizada com o cat para filtrar as linhas que contenham essa palavra
+
+O comando: kill -TERM <processo ID> irá matar o processo de maneira mais educada
+
+O comando: top irá mostrar as informações de memória e CPU que cada processo está consumindo
+
+O comando: killall <nome do processo> irá matar todos os processos com esse nome
+
+O comando: top -u <nome do usuario> irá mostrar apenas os processos de um determinado usuário
+
+O comando: top -p <process ID> podemos acompanhar as informaçõe de um processo em especifico
+
+O comando: pstree irá criar uma árvore com todos os processos que estão sendo executados
+
+O comando: jobs irá mostrar os processos que estão abertos
+
+O comando: bg <identificador do job> irá enviar esse job a executar no background
+
+O comando: fg <identificador do job> irá enviar esse job a executar no foreground
+
+O comando: <nome do programa> irá abrir o programa específicado (Ctrl + C) para matar a execução. (Ctrl + z) irá parar a execução
+
+O comando: <nome do programa> & irá abrir o processo em backgound para não travar o terminal
+
+O comando: sh <nome do arquivo> irá executar o arquivo que comtém um código fonte para execução
+
+O comando: chmod + <permissao a ser modificada (r/w/x)> irá acrescentar essa permissão desse arquivo para os usuários da máquina
+
+O comando: chmod - <permissao a ser modificada (r/w/x)> irá remover essa permissão desse arquivo para os usuários da máquina
+
+O comando: locate <nome do programa> irá pesquisar todos os arquivos que contenham o nome do programa e mostrará a localização desses arquivos
+
+O comando: sudo updatedb irá atualizar a base de dados interna do sistema para assim realizar uma pesquisa mais rápida
+
+O comando: which <nome do programa> vai me indicar qual será o programa que será executado caso faça o comando só con o nome do programa
+
+O comando: passwd muda a senha do usuário atual
+
+O comando: su <nome do usuário> irá mudar a sessão do usuário atual.
+
+O comando: adduser <nome do usuário> irá acrescentar um usuário na máquina
+
+O comando: chmod o/u/g-rx irá modificar as perrmissões de Outros, do Usuário, do Grupo. O símbolo - indica a remoção das permissões
+
+O comando: env mostrá as variáveis de ambiente
+
+O comando: PATH=$PATH:<camino do diretório que queremos acrescentar ao PATH> irá adicionar esse diretório no PATH para poder executar os scripts. 
+	Esta alteração só vale para a sessão atual do bash
+
+O comando: wc <nome de arquivo> irá retornar o número de palavras, caracteres e linhas contidas no arquivo
+
+O comando: wc -w/-c/-l <nome do arquivo> para indicar que apenas desejamos o número de palavras, caracteres e linhas contidas no arquivo
+
+O comando: sudo apt-get update irá pesquisar na internet se há alguma atualização para os programas instalados na máquina
+
+O comando: apt-cache search <nome do programa a ser pesquisado> serve para pesquisar os programas
+
+O comando: sudo dpkg -i <nome do arquivo .deb> irá instalar o programa depois de ter baixado da internet
+
+O comando: sudo dpkg -r <nome do arquivo . deb> irá desinstalar o programa especificado
+
+O comando: apt-get -f install irá instalar todas as dependências que estão gerando erros ao instalar um certo programa
+
+O comando: sudo service <nome do programa> stop fará que o programa pare a sua execução
+
+O comando: sudo service <nome do programa> start fará que o programa incie a sua execução
+
+O comando: sudo service <nome do programa> status mostrará o status do programa indicado
+
+Para instalar um programa baixado no formato .tar.gz da internet, temos que executar o configure (se ele tiver) para verificar se todas as dependencias
+	são cumpridas 
+
+O comando: ./configure irá verificar as dependências
+
+Já com o compilador de C instalado, damos make na pasta e podemos continuar com a instalação (caso não hajá dependências faltantes)
+
+O comando: make vai compilar a pasta
+
+O comando: sudo make install para instalar o programa na máquina
+
+O comando: ssh <nome da pessoa>@<ip> vai conectar a outra máquina dentro da rede
+
+O comando: scp <nome do arquivo> <nome da pessoa>@<ip>:<diretório para guardar> vai enviar um arquivo para essa máquina
+
+O comando: scp -r <nome do arquivo> <nome da pessoa>@<ip>:<diretório para guardar> vai enviar um diretório para essa máquina
