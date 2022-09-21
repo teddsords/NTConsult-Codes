@@ -1,0 +1,116 @@
+Para descobrir qual é o diretório atual podemos usar o comando pwd
+
+Para listar os arquivos e diretórios na pasta podemos usar o comando ls
+
+Para o terminal me repetir o que eu escribi podemos usar o comando Echo
+
+Para redirecionar a resposta do terminal para um arquivo.txt podemos usar o comando Echo "Welcome" > welcome.txt
+
+Para ler o conteúdo de um arquivo txt, podemos usar o comando: cat <nome do arquivo>
+
+A tecla TAB ajuda no terminal para autocompletar o comando
+
+Usar o comando: clear para limpar a tela do terminal
+
+O comando: ls -l nos dá maiores detalhes sobre os arquivos e pastas dentro do diretório que estamos trabalhando atualmente
+
+O comando: ls -la nos mostra todos os arquivos e diretórios que são invisíveis
+
+o comando: man <ls/pwd/comando> nos mostra a documentação daquele comando
+
+O comando: cd <Diretório> troca o diretório do terminal para o especificado
+
+O comando: echo <texto> >> <nome do arquivo.txt> vai adicionar/concatenar no final do arquivo
+
+O comando: cd .. sobe um nível nos diretórios
+
+O comando: ls . vai listar os arquivos e diretórios no próprio diretório
+
+O comando: ls .. vai listar os arquivos e diretórios num nível acima
+
+O comando: mkdir <nome do diretório> vai criar uma nova pasta no diretório atual
+
+O comando: cd nos leva para o diretório base o qual seria /home/ubuntu
+
+O comando: rmdir <nome do diretório> remove o diretório específicado
+
+O comando: rm <nome do arquivo> remove o arquivo específicado
+
+O comando: cat <arquivo?.txt>  o ? irá ler qualquer arquivo que tenha arquivo como nome e substituira o ? pelos números
+no exemplo do vídeo o terminal lê o arquivo1.txt e arquivo2.txt
+
+O comando: cat <arquivo*.txt> vai ler todos os arquivos, sem importar o que tenha depois de arquivo. Nesse exemplo o arquivo10.txt também é lido 
+
+O comando: cat *.txt irá ler todos os arquivos de texto que tenham naquele diretório
+
+O comando: rm -r <nome diretório> vai apagar recursivamente, ele vai sair apagando tudo. TER CUIDADO COM ESSE COMANDO!!!!
+
+
+O comando: cp <arquivo origem> <arquivo destino> irá copiar o conteúdo do primeiro para o segundo arquivo do comando
+
+O comando: mv <arquivo origem> <arquivo destino> irá mover o arquivo para outro nome
+
+O comando: mv <arquivo orignal> <diretório/> irá mover o arquivo para o diretório específicado com o mesmo nome
+
+o comando: mv <arquivo orignal> <diretório/novo-nome.txt> irá mover o arquivo para o diretório específicado com outro nome
+
+O comando: ls * irá listar tudo o que tem dentro do diretório atual e dos subdiretórios
+
+O comando: cp -r <diretório origem> <diretório destino> irá copiar o diretório de origem para o diretório destino
+
+O comando: mv <diretório origem> <diretório destino> irá mover o diretório de origem para o diretório destino
+
+O comando: zip -r <nome do .zip> <nome do diretório a ser zipado> irá compactar esse diretório
+
+O comando: unzip <nome do arquivo.zip> irá unzipar o arquivo
+
+O comando: unzip -q <nome do arquivo.zip> irá unzipar o arquivo sem mostrar resposta no terminal já que ele joga muita informação de volta
+
+O comando: zip -rq <nome do arquivo.zip> <nome do diretório a ser zipado> irá zipar esse diretório sem mostrar informações no terminal
+
+O comando: unzip -l <nome do arquivo.zip> irá listar todos os arquivos dentro do .zip
+
+O comando: tar -cz  <nome diretório a ser compactado> > <nome do arquivo compactado.tar.gz> irá compactar pela maneira mais comum no Linux. 
+	O modificador C é para criar e Z para zipar
+
+O comando: tar -xz < <nome do arquivo .tar.gz> irá descompactar o arquivo. O modificador X é de extrair e o < é para input
+
+O comando: tar -czf <nome do arquivo .tar.gz> <nome do diretório a ser zipado> Assim podemos passar o nome do arquivo a ser compactado 
+	sem necessidade de fazer o direcionamento
+
+O comando: tar -xzf <nome do arquivo .tar.gz>  Assim podemos passar o nome do arquivo a ser descompactado
+	sem necessidade de fazer o direcionamento
+
+O comando: tar -vxzf <nome do arquivo .tar.gz> Assim podemos obter mais informações sobre o que o tar descompactou
+
+O comando: tar -cjf <nome do arquivo.tar.bz2> <nome do diretório a ser compactado> assim compactamos com BZIP2, o qual é mais eficiente na compactação, 
+	mas  é mais demorado.
+
+O comando: touch <nome do arquivo> Irá encostar no arquivo, ou seja, irá abrir e guardar novamente para alterar a data e hora da última modificação
+
+O comando: head <nome do arquivo .txt> irá trazer as primeiras 10 linhas do arquivo
+
+O comando: head -n <numero de linhas desejadas> <nome do arquivo .txt> irá trazer o número de linhas específicado depois do n do começo do arquivo
+
+O comando: tail <nome do arquivo .txt> irá trazer as últimas 10 linhas do arquivo
+
+O comando: tail -n <número de linhas desejadas> <nome do arquivo .txt> irá trazer o número de linhas especificado depois do n do final do arquivo
+
+O comando: less <nome do arquivo .txt> irá mostrar o arquivo inteiro no terminal, podendo navegar nele utilizando as setas
+
+O comando: vi <nome do arquivo .txt> irá abrir o arquivo no editor de texto no próprio terminal.
+Para acrescentar alguma informação na posição do cursor basta digitar "i" escrevere logo clicar em ESC.
+Para salvar basta escrever ":w" ele irá salvar o arquivo. Para sair do editor de texto, basta digitar ":q"´
+Para acrescentar alguma informação na seguinte posição do cursor basta digitar "a"
+Para remover o caracter atual, basta digitar "x"
+Para apagar varios caracteres de uma vez só, basta digitar o número de vezes que o "x" deve ser executado, seguido pelo "x", por exemplo "11x"
+Para salvar e sair, podemos digitar ":wq" para ele salvar e sair num comando só
+Podemos ignorar as mudanças no arquivo com o comando ":q!"
+Para acrescentar no final da linha, basta digitar "A"
+Para mover o cursor até a última linha podemos digitar Shift + g
+Para mover o cursor até uma linha específica podemos digitar o número da linha + Shift + g
+Para ir até o final da linha podemos digitar $
+Para ir ao início da linha podemos digitar 0
+Para procurar, basta digitar "/" e especificar a palavra que queremos procurar
+depois da pesquisa podemos usar n para ir pra próxima ocorrência e Shift + n para voltar na ocorrência
+para copiar uma linha basta digitar "yy" e para colar bassta digitar "p"
