@@ -4,12 +4,21 @@ print('Bem vindo no jogo de Adininação')
 print("*******************************")
 
 numero_secreto = 43
+tentativas = 3
+rodada = 1
+while rodada <= tentativas:
+    print("Tentativa:", rodada, "de", tentativas)
+    chute = int(input("Digite o seu numero: "))
+    print("Voce digitou:", chute)
 
-chute = int(input("Digite o seu numero: "))
+    if numero_secreto == chute:
+        print("Voce acertou!")
+    else:
+        if chute > numero_secreto:
+            print("Errou!! O seu chute foi maior que o numero secreto")
+        elif chute < numero_secreto:
+            print("Errou!! O seu chute foi menor que o numero secreto")
+    
+    rodada += 1
 
-print("Voce digitou:", chute)
-
-if numero_secreto == chute:
-    print("Voce acertou!")
-else:
-    print("Voce errou!")
+print("Fim do jogo")   
