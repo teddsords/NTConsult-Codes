@@ -1,10 +1,13 @@
 # Jogo de Adivinação criado para o curso de Python: começando com a linguagem da Alura
+from random import random, randrange
+
 print("*******************************")
 print('Bem vindo no jogo de Adininação')
 print("*******************************")
 
-numero_secreto = 43
+numero_secreto = randrange(1, 101)
 tentativas = 3
+print(numero_secreto)
 
 for rodada in range(1,tentativas + 1):
     print(f"Tentativa: {rodada} de {tentativas}")
