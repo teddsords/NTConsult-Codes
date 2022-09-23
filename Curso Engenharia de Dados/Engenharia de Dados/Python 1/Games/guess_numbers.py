@@ -6,8 +6,18 @@ print('Bem vindo no jogo de Adininação')
 print("*******************************")
 
 numero_secreto = randrange(1, 101)
-tentativas = 3
 print(numero_secreto)
+
+print("Qual o nivel de dificuldade?")
+print("1- Facil\n2- Medio\n3- Dificil")
+nivel = int(input("Escolha o nivel:"))
+
+if nivel == 1:
+    tentativas = 20
+elif nivel == 2:
+    tentativas = 10
+else:
+    tentativas = 5
 
 for rodada in range(1,tentativas + 1):
     print(f"Tentativa: {rodada} de {tentativas}")
