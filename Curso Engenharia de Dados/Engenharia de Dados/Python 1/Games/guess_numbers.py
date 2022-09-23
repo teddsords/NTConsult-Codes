@@ -40,5 +40,8 @@ for rodada in range(1,tentativas + 1):
         
         pontos_perdidos = abs(numero_secreto - chute)
         pontos -= pontos_perdidos
+
+        if(rodada == tentativas):
+            print(f"O numero secreto era: {numero_secreto}")
     
 print("Fim do jogo")   
