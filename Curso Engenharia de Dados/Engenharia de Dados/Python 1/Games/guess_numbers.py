@@ -6,6 +6,7 @@ print('Bem vindo no jogo de Adininação')
 print("*******************************")
 
 numero_secreto = randrange(1, 101)
+pontos = 1000
 print(numero_secreto)
 
 print("Qual o nivel de dificuldade?")
@@ -29,12 +30,15 @@ for rodada in range(1,tentativas + 1):
         continue
 
     if numero_secreto == chute:
-        print("Voce acertou!")
+        print(f"Voce acertou e fez {pontos}!")
         break
     else:
         if chute > numero_secreto:
             print("Errou!! O seu chute foi maior que o numero secreto")
         elif chute < numero_secreto:
             print("Errou!! O seu chute foi menor que o numero secreto")
+        
+        pontos_perdidos = abs(numero_secreto - chute)
+        pontos -= pontos_perdidos
     
 print("Fim do jogo")   
