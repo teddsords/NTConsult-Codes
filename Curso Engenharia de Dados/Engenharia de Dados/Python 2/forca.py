@@ -4,9 +4,17 @@ def jogar_forca():
     print('   Bem vindo no jogo de Forca')
     print("*******************************")
 
-    palavra_secreta = 'banana'.lower()
-    letras_acertadas = ['_', '_', '_', '_', '_', '_']
+    arquivo = open('palavras.txt', 'r')
+    palavras = []
+    for linha in arquivo:
+        palavras.append(linha.strip().lower())
+    
+    arquivo.close()
+    print(palavras)
 
+    palavra_secreta = 'baca'.lower()
+    letras_acertadas = ['_' for letra in palavra_secreta]
+    
     enforcou = False
     acertou = False
     erros = 0
