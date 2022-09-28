@@ -1,18 +1,31 @@
-# Started developing in Python 1, but will be finished in Python 2
-def jogar_forca():
+# Started developing in Python 1 course, but will be finished in Python 2 course
+from random import randrange
+
+def imprime_mensagem_abertura():
     print("*******************************")
     print('   Bem vindo no jogo de Forca')
     print("*******************************")
 
+def carrega_palavra_secreta():
     arquivo = open('palavras.txt', 'r')
     palavras = []
     for linha in arquivo:
         palavras.append(linha.strip().lower())
     
     arquivo.close()
-    print(palavras)
+    numero = randrange(0, len(palavras))
+    palavra_secreta = palavras[numero]
 
-    palavra_secreta = 'baca'.lower()
+    return palavra_secreta
+
+
+def jogar_forca():
+    
+    imprime_mensagem_abertura()
+
+    palavra_secreta = carrega_palavra_secreta()
+
+    
     letras_acertadas = ['_' for letra in palavra_secreta]
     
     enforcou = False
