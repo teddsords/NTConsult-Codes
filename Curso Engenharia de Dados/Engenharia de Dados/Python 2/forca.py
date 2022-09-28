@@ -4,22 +4,27 @@ def jogar_forca():
     print('   Bem vindo no jogo de Forca')
     print("*******************************")
 
-    palavra_secreta = 'python'
+    palavra_secreta = 'banana'
+    letras_acertadas = ['_', '_', '_', '_', '_', '_']
 
     enforcou = False
     acertou = False
+    erros = 0
 
+    print(letras_acertadas)
     while (not enforcou and not acertou):
         chute = str.strip(input('Qual letra?\nDigite:'))
         index = 0
 
-        for letra in palavra_secreta:
-            if chute.lower() == letra.lower():
-                print(f'Encontrei a letra {letra} na posicao {index}\n')
+        if chute in palavra_secreta:
+            for letra in palavra_secreta:
+                if chute.lower() == letra.lower():
+                    letras_acertadas[index] = letra.lower()
+                index += 1
+        else:
+            erros += 1
             
-            index += 1
-
-
+        print(letras_acertadas)    
 
     print('Fim do jogo')
 
