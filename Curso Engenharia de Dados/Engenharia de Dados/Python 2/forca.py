@@ -29,7 +29,7 @@ def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
                     letras_acertadas[index] = letra.lower()
                 index += 1 
 
-def imprime_mensagem_vencedor():
+def imprime_mensagem_ganhador():
     print("Parabéns, você ganhou!")
     print("       ___________      ")
     print("      '._==_==_=_.'     ")
@@ -62,6 +62,56 @@ def imprime_mensagem_perdedor(palavra_secreta):
     print("     \_         _/         ")
     print("       \_______/           ")
 
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if(erros == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if(erros == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if (erros == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
+
 def jogar_forca():
     
     imprime_mensagem_abertura()
@@ -83,15 +133,16 @@ def jogar_forca():
             marca_chute_correto(chute, letras_acertadas, palavra_secreta)
         else:
             erros += 1
+            desenha_forca(erros)
         
-        enforcou = erros == 6   # Se erros for igual a 6, ele fara que enforcou seja igual a True
+        enforcou = erros == 7   # Se erros for igual a 6, ele fara que enforcou seja igual a True
         acertou = '_' not in letras_acertadas   # Se ha underscores dentro de letras acertadas, sera False
         print(letras_acertadas)    
 
     if acertou:
         imprime_mensagem_ganhador()
     else:
-        imprime_mensagem_perdedor()
+        imprime_mensagem_perdedor(palavra_secreta)
     
     print('Fim do jogo')
 
