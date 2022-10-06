@@ -5,8 +5,16 @@ from airflow.utils.decorators import apply_defaults
 from hooks.twitter_hook import TwitterHook
 import json
 from datetime import datetime
+from pathlib import Path
 
 class TwitterOperator(BaseOperator):
+
+    template_fields = [
+        "query",
+        "file_path",
+        "start_time",
+        "end_time"
+    ]
 
     # Aplicando os defaults
     @apply_defaults
@@ -14,6 +22,7 @@ class TwitterOperator(BaseOperator):
     def __init__(
         self,
         query,
+        file_path, 
         conn_id = None,
         start_time= None,
         end_time = None,
@@ -22,10 +31,13 @@ class TwitterOperator(BaseOperator):
        
         super().__init__(*args, **kwargs)   # Inicializando a classe pai 
         self.query = query      # Recebendo os valores recebidos na iniciação da classe
+        self.file_path = file_path
         self.conn_id = conn_id
         self.start_time = start_time
         self.end_time = end_time
 
+    def create_parent_folder(self):
+        Path(Path(self.file_path).parent).mkdir(parents= True, exist_ok= True)
 
     # Função para executar o hook por meio do operador
     def execute(self, context):
@@ -35,15 +47,23 @@ class TwitterOperator(BaseOperator):
             start_time = self.start_time, 
             end_time = self.end_time
         )
+        # Criando a pasta para conter o arquivo
+        self.create_parent_folder()
 
         # Ainda dentro da função, fazemos o for para poder imprimir o retorno da função run() do hook!!!
-        for pg in hook.run():
-            print(json.dumps(pg, indent= 4, sort_keys= True))
+        with open(self.file_path, 'w') as output_file:
+            for pg in hook.run():
+                json.dump(pg, output_file, ensure_ascii= False)
+                output_file.write('\n')
 
 if __name__ == '__main__':
     # Instânciando uma DAG para fazer uso do operador.
     with DAG(dag_id='TwitterTest',start_date= datetime.now()) as dag:       
-        to = TwitterOperator(query= 'AluraOnline', task_id='test_run')  # Declarando o operador propriemente dito
+        to = TwitterOperator(
+            query= 'AluraOnline', 
+            file_path= "AluraOnline_{{ ds_nodash}}.json",
+            task_id='test_run')  # Declarando o operador propriemente dito
         ti = TaskInstance(task= to)     # Declarando uma task instance
 
-        to.execute(ti.task_id)      # Finalmente executando o operador com o id da task.
+        to.run()
+        #to.execute(ti.task_id)      # Finalmente executando o operador com o id da task.
