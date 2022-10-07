@@ -4,8 +4,9 @@ from airflow.models import BaseOperator, DAG, TaskInstance
 from airflow.utils.decorators import apply_defaults
 from hooks.twitter_hook import TwitterHook
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
+from os.path import join
 
 class TwitterOperator(BaseOperator):
 
@@ -61,9 +62,16 @@ if __name__ == '__main__':
     with DAG(dag_id='TwitterTest',start_date= datetime.now()) as dag:       
         to = TwitterOperator(
             query= 'AluraOnline', 
-            file_path= "AluraOnline_{{ ds_nodash}}.json",
-            task_id='test_run')  # Declarando o operador propriemente dito
-        ti = TaskInstance(task= to)     # Declarando uma task instance
+            # Acrescentando o caminho enteiro para criar uma pasta e criar o nosso "data lake"
+            file_path= join(
+                "/home/teddy/NTConsult-Codes/Curso Engenharia de Dados/Engenharia de Dados/Getting to know Apache Airflow/datapipeline/datalake", # Criando diretorio
+                "twitter_aluraonline",  # Tabela dentro do nosso "data lake"
+                "extract_date={{ ds }}",    # Partição dentro da tabela com a data de extração
+                "AluraOnline_{{ ds_nodash}}.json"),
+
+            task_id='test_run'
+        )  # Declarando o operador propriamente dito
+        ti = TaskInstance(task= to, execution_date= datetime.now() - timedelta(days= 1))     # Declarando uma task instance
 
         to.run()
         #to.execute(ti.task_id)      # Finalmente executando o operador com o id da task.
