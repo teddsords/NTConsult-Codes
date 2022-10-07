@@ -1,5 +1,5 @@
 from airflow.models import DAG
-from airflow.operators.alura import TwitterOperator
+from datapipeline.airflow.plugins.alura import TwitterOperator
 from datetime import datetime
 from os.path import join
 
