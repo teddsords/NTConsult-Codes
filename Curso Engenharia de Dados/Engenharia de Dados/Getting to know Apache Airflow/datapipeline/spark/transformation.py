@@ -41,7 +41,7 @@ def twitter_transform(spark, src, dest, process_date):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        descriptiopn= 'Spark Twitter Transformation'
+        description= 'Spark Twitter Transformation'
     )
     parser.add_argument('--src', required= True)
     parser.add_argument('--dest', required= True)
