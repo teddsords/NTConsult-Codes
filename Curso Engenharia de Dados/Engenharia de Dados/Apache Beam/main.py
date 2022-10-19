@@ -1,6 +1,7 @@
 import apache_beam as beam
 from apache_beam.io import ReadFromText
 from apache_beam.options.pipeline_options import PipelineOptions
+import re
 
 def texto_para_lista(elemento, delimitador="|"):
     """
@@ -40,7 +41,10 @@ def casos_dengue(elemento):
     """
     uf, registros = elemento    # A variavel UF recebe a chave UF e a variavel registros recebe a lista de dicionarios
     for registro in registros:
-        yield(f"{uf}-{registro['ano_mes']}", registro['casos'])
+        if bool(re.search(r'\d', registro['casos'])):
+            yield(f"{uf}-{registro['ano_mes']}", float(registro['casos']))
+        else:
+            yield(f"{uf}-{registro['ano_mes']}", 0.0)
 
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
@@ -70,6 +74,8 @@ dengue = (
         beam.GroupByKey()
     | 'Descompactar casos de dengue' >>
         beam.FlatMap(casos_dengue)
+    | 'Soma dos casos pela chave' >>
+        beam.CombinePerKey(sum)
     | 'Mostrar resultados' >> 
         beam.Map(print)
 )
