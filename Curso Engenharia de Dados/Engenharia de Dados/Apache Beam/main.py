@@ -33,6 +33,15 @@ def chave_uf(elemento):
     chave= elemento['uf']
     return (chave, elemento)
 
+def casos_dengue(elemento):
+    """
+    Recebe uma tupla ('UF', [{}, {}])
+    Retornar uma tupla ('UF-ANO-MES', casos)
+    """
+    uf, registros = elemento    # A variavel UF recebe a chave UF e a variavel registros recebe a lista de dicionarios
+    for registro in registros:
+        yield(f"{uf}-{registro['ano_mes']}", registro['casos'])
+
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
 colunas_dengue = [  'id',
@@ -59,6 +68,8 @@ dengue = (
         beam.Map(chave_uf)
     | 'Agrupar pelo estado' >>
         beam.GroupByKey()
+    | 'Descompactar casos de dengue' >>
+        beam.FlatMap(casos_dengue)
     | 'Mostrar resultados' >> 
         beam.Map(print)
 )
