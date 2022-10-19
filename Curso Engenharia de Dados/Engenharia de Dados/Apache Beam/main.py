@@ -25,6 +25,13 @@ def trata_data(elemento):
     elemento['ano_mes'] = '-'.join(elemento['data_iniSE'].split('-')[:2])
     return elemento
 
+def chave_uf(elemento):
+    """
+    Receber um dicionario
+    Retornar uma tupla com o estado (UF) e o elemento(dicionario) virando assim ->(UF, dicionario)
+    """
+    chave= elemento['uf']
+    return (chave, elemento)
 
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
@@ -48,7 +55,12 @@ dengue = (
         beam.Map(lista_para_dicionario, colunas_dengue)
     | 'Criar campo ano_mes' >>
         beam.Map(trata_data)
-    | 'Mostrar resultados' >> beam.Map(print)
+    | 'Criar chave pelo estado' >>
+        beam.Map(chave_uf)
+    | 'Agrupar pelo estado' >>
+        beam.GroupByKey()
+    | 'Mostrar resultados' >> 
+        beam.Map(print)
 )
 
 pipeline.run()
