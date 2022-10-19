@@ -17,6 +17,14 @@ def lista_para_dicionario(elemento, colunas):
     """
     return dict(zip(colunas, elemento))
 
+def trata_data(elemento):
+    """
+    Recebe um dicionario e cria um novo campo ANO-MES
+    Retorno o mesmo dicionario com o novo campo
+    """
+    elemento['ano_mes'] = '-'.join(elemento['data_iniSE'].split('-')[:2])
+    return elemento
+
 
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
@@ -38,6 +46,8 @@ dengue = (
         beam.Map(texto_para_lista)
     | 'De lista para dicionario' >>
         beam.Map(lista_para_dicionario, colunas_dengue)
+    | 'Criar campo ano_mes' >>
+        beam.Map(trata_data)
     | 'Mostrar resultados' >> beam.Map(print)
 )
 
