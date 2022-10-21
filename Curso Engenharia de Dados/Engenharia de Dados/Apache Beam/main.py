@@ -63,6 +63,14 @@ def chave_uf_ano_mes_de_lista(elemento):
 
     return chave, chuva
 
+def arredonda(elemento):
+    """
+    Recebe uma tupla ('PA-2019-06', 2364.0000000000003)
+    Retorna uma tupla com o valor arredondado ('PA-2019-06', 2364.0)
+    """
+    chave, chuva = elemento
+    return (chave, round(chuva, 1))
+
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
 colunas_dengue = [  'id',
@@ -107,6 +115,8 @@ chuvas = (
         beam.Map(chave_uf_ano_mes_de_lista)
     | 'Soma das chuvas pela chave' >>
         beam.GroupByKey(sum)
+    | 'Arredondar resultados de chuvas' >>
+        beam.Map(arredonda)
     | 'Mostrar resultados de chuvas' >> 
        beam.Map(print)
 )
