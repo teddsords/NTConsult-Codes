@@ -83,7 +83,6 @@ colunas_dengue = [  'id',
                     'latitude',
                     'longitude']
 
-print('Casos de dengue')
 dengue = (
     pipeline
     | 'Leitura do dataset de dengue' >> 
@@ -102,11 +101,10 @@ dengue = (
         beam.FlatMap(casos_dengue)
     | 'Soma dos casos pela chave' >>
         beam.CombinePerKey(sum)
-    | 'Mostrar resultados' >> 
-       beam.Map(print)
+    #| 'Mostrar resultados' >> 
+     #  beam.Map(print)
 )
 
-print('Chuvas')
 chuvas = (
     pipeline
     | 'Leitura do dataset de chuvas' >> 
@@ -119,7 +117,17 @@ chuvas = (
         beam.CombinePerKey(sum)
     | 'Arredondar resultados de chuvas' >>
         beam.Map(arredonda)
-    | 'Mostrar resultados de chuvas' >> 
+    #| 'Mostrar resultados de chuvas' >> 
+    #   beam.Map(print)
+)
+
+resultado = (
+    (chuvas, dengue)    # Recebendo as duas pcollections
+    | "Empilha as pcolls" >>
+        beam.Flatten()    # Unindo as pcollections recebidas
+    | 'Agrupamento por chave' >>
+        beam.GroupByKey()   # Juntando pelas chaves
+    | 'Mostrar resultados da uniao' >> 
        beam.Map(print)
 )
 
