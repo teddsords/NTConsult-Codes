@@ -57,7 +57,7 @@ colunas_dengue = [  'id',
                     'cep',
                     'latitude',
                     'longitude']
-
+'''
 dengue = (
     pipeline
     | 'Leitura do dataset de dengue' >> 
@@ -76,8 +76,18 @@ dengue = (
         beam.FlatMap(casos_dengue)
     | 'Soma dos casos pela chave' >>
         beam.CombinePerKey(sum)
-    | 'Mostrar resultados' >> 
-        beam.Map(print)
+    #| 'Mostrar resultados' >> 
+    #   beam.Map(print)
+)
+'''
+chuvas = (
+    pipeline
+    | 'Leitura do dataset de chuvas' >> 
+        ReadFromText('chuvas.csv', skip_header_lines=1)
+    | 'De texto para lista (chuva)' >>
+        beam.Map(texto_para_lista, delimitador= ',')
+    | 'Mostrar resultados de chuvas' >> 
+       beam.Map(print)
 )
 
 pipeline.run()
