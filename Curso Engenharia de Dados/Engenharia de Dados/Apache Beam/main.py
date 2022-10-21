@@ -69,7 +69,7 @@ def arredonda(elemento):
     Retorna uma tupla com o valor arredondado ('PA-2019-06', 2364.0)
     """
     chave, chuva = elemento
-    return (chave, round(chuva, 1))
+    return (chave, round(chuva,1))
 
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
@@ -82,11 +82,12 @@ colunas_dengue = [  'id',
                     'cep',
                     'latitude',
                     'longitude']
-'''
+
+print('Casos de dengue')
 dengue = (
     pipeline
     | 'Leitura do dataset de dengue' >> 
-        ReadFromText('casos_dengue.txt', skip_header_lines=1)
+        ReadFromText('sample_casos_dengue.txt', skip_header_lines=1)
     | 'De texto para lista' >>
         beam.Map(texto_para_lista)
     | 'De lista para dicionario' >>
@@ -101,20 +102,21 @@ dengue = (
         beam.FlatMap(casos_dengue)
     | 'Soma dos casos pela chave' >>
         beam.CombinePerKey(sum)
-    #| 'Mostrar resultados' >> 
-    #   beam.Map(print)
+    | 'Mostrar resultados' >> 
+       beam.Map(print)
 )
-'''
+
+print('Chuvas')
 chuvas = (
     pipeline
     | 'Leitura do dataset de chuvas' >> 
-        ReadFromText('chuvas.csv', skip_header_lines=1)
+        ReadFromText('sample_chuvas.csv', skip_header_lines=1)
     | 'De texto para lista (chuva)' >>
         beam.Map(texto_para_lista, delimitador= ',')
     | 'Criando chave UF-YY-MM' >>
         beam.Map(chave_uf_ano_mes_de_lista)
     | 'Soma das chuvas pela chave' >>
-        beam.GroupByKey(sum)
+        beam.CombinePerKey(sum)
     | 'Arredondar resultados de chuvas' >>
         beam.Map(arredonda)
     | 'Mostrar resultados de chuvas' >> 
