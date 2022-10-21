@@ -46,6 +46,23 @@ def casos_dengue(elemento):
         else:
             yield(f"{uf}-{registro['ano_mes']}", 0.0)
 
+def chave_uf_ano_mes_de_lista(elemento):
+    """
+    Receber uma lista de elementos
+    Retornar uma tupla com chave uf-ano-mes e o valor de chuva em mm
+    ('UD-ANO-MES', 1.3)
+    """
+    data, chuva, uf = elemento
+    ano_mes = '-'.join(data.split('-')[:2])
+    chave = f'{uf}-{ano_mes}'
+
+    if float(chuva) < 0:
+        chuva = 0.0
+    else:
+        chuva = float(chuva)
+
+    return chave, chuva
+
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
 colunas_dengue = [  'id',
@@ -86,6 +103,10 @@ chuvas = (
         ReadFromText('chuvas.csv', skip_header_lines=1)
     | 'De texto para lista (chuva)' >>
         beam.Map(texto_para_lista, delimitador= ',')
+    | 'Criando chave UF-YY-MM' >>
+        beam.Map(chave_uf_ano_mes_de_lista)
+    | 'Soma das chuvas pela chave' >>
+        beam.GroupByKey(sum)
     | 'Mostrar resultados de chuvas' >> 
        beam.Map(print)
 )
