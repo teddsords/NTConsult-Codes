@@ -71,6 +71,18 @@ def arredonda(elemento):
     chave, chuva = elemento
     return (chave, round(chuva,1))
 
+def filtra_campos_vazios(elemento):
+    """
+    Remove elementos que tenham chaves vazias
+    Receber uma tupla ('CE-2015-04', {'chuvas': [55.0], 'dengue': [680.0]})
+    Retorna uma tupla sem chaves/campos vazios
+    """
+
+    chave, dados = elemento
+    if all([dados['chuvas'],dados['dengue']]):
+        return True
+    return False
+
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
 colunas_dengue = [  'id',
@@ -130,6 +142,8 @@ resultado = (
     ({'chuvas': chuvas, 'dengue': dengue})
     | 'Mesclar pcolls' >>
         beam.CoGroupByKey()
+    | 'Filtrar dados vazios' >>
+        beam.Filter(filtra_campos_vazios)
     | 'Mostrar resultados da uniao' >> 
        beam.Map(print)
 )
