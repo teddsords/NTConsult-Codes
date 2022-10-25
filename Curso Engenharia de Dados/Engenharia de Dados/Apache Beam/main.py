@@ -89,11 +89,11 @@ def descompactar_elementos(elemento):
     Retornar uma tupla ('CE', 2015, 12, 7.6, 29.0)
     """
     chave, dados = elemento
-    chuva = dados['chuvas']
-    dengue = dados['dengue']
+    chuva = dados['chuvas'][0]
+    dengue = dados['dengue'][0]
     uf, ano, mes = chave.split('-')
 
-    return uf, ano, mes, chuva, dengue
+    return uf, int(ano), int(mes), chuva, dengue
 
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
@@ -125,8 +125,8 @@ dengue = (
         beam.FlatMap(casos_dengue)
     | 'Soma dos casos pela chave' >>
         beam.CombinePerKey(sum)
-    | 'Mostrar resultados' >> 
-       beam.Map(print)
+    #| 'Mostrar resultados' >> 
+     #  beam.Map(print)
 )
 
 chuvas = (
@@ -142,7 +142,7 @@ chuvas = (
     | 'Arredondar resultados de chuvas' >>
         beam.Map(arredonda)
     #| 'Mostrar resultados de chuvas' >> 
-    #   beam.Map(print)
+     #  beam.Map(print)
 )
 
 resultado = (
@@ -158,8 +158,8 @@ resultado = (
         beam.Filter(filtra_campos_vazios)
     | 'Descompactar elementos' >>
         beam.Map(descompactar_elementos)
-    # | 'Mostrar resultados da uniao' >> 
-    #    beam.Map(print)
+    | 'Mostrar resultados da uniao' >> 
+        beam.Map(print)
 )
 
 pipeline.run()
