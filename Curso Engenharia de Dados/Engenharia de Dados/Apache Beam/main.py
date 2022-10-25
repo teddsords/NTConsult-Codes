@@ -1,5 +1,6 @@
 import apache_beam as beam
 from apache_beam.io import ReadFromText
+from apache_beam.io.textio import WriteToText
 from apache_beam.options.pipeline_options import PipelineOptions
 import re
 
@@ -117,7 +118,7 @@ colunas_dengue = [  'id',
 dengue = (
     pipeline
     | 'Leitura do dataset de dengue' >> 
-        ReadFromText('sample_casos_dengue.txt', skip_header_lines=1)
+        ReadFromText('casos_dengue.txt', skip_header_lines=1)
     | 'De texto para lista' >>
         beam.Map(texto_para_lista)
     | 'De lista para dicionario' >>
@@ -139,7 +140,7 @@ dengue = (
 chuvas = (
     pipeline
     | 'Leitura do dataset de chuvas' >> 
-        ReadFromText('sample_chuvas.csv', skip_header_lines=1)
+        ReadFromText('chuvas.csv', skip_header_lines=1)
     | 'De texto para lista (chuva)' >>
         beam.Map(texto_para_lista, delimitador= ',')
     | 'Criando chave UF-YY-MM' >>
@@ -167,9 +168,10 @@ resultado = (
         beam.Map(descompactar_elementos)
     | 'Preparar csv' >>
         beam.Map(preparar_csv)
-    | 'Mostrar resultados da uniao' >> 
-        beam.Map(print)
+    # | 'Mostrar resultados da uniao' >> 
+    #     beam.Map(print)
     
 )
 
+resultado | 'Criar arquivo CSV' >> WriteToText('resultado', file_name_suffix= '.csv', header= 'UF;ANO;MES;CHUVA;DENGUE')
 pipeline.run()
