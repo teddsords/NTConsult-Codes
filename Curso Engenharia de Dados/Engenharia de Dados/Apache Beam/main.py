@@ -83,6 +83,18 @@ def filtra_campos_vazios(elemento):
         return True
     return False
 
+def descompactar_elementos(elemento):
+    """
+    Receber uma tupla ('CE-2015-12', {'chuvas': [7.6], 'dengue': [29.0]})
+    Retornar uma tupla ('CE', 2015, 12, 7.6, 29.0)
+    """
+    chave, dados = elemento
+    chuva = dados['chuvas']
+    dengue = dados['dengue']
+    uf, ano, mes = chave.split('-')
+
+    return uf, ano, mes, chuva, dengue
+
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
 colunas_dengue = [  'id',
@@ -113,8 +125,8 @@ dengue = (
         beam.FlatMap(casos_dengue)
     | 'Soma dos casos pela chave' >>
         beam.CombinePerKey(sum)
-    #| 'Mostrar resultados' >> 
-     #  beam.Map(print)
+    | 'Mostrar resultados' >> 
+       beam.Map(print)
 )
 
 chuvas = (
@@ -144,8 +156,10 @@ resultado = (
         beam.CoGroupByKey()
     | 'Filtrar dados vazios' >>
         beam.Filter(filtra_campos_vazios)
-    | 'Mostrar resultados da uniao' >> 
-       beam.Map(print)
+    | 'Descompactar elementos' >>
+        beam.Map(descompactar_elementos)
+    # | 'Mostrar resultados da uniao' >> 
+    #    beam.Map(print)
 )
 
 pipeline.run()
