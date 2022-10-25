@@ -86,14 +86,21 @@ def filtra_campos_vazios(elemento):
 def descompactar_elementos(elemento):
     """
     Receber uma tupla ('CE-2015-12', {'chuvas': [7.6], 'dengue': [29.0]})
-    Retornar uma tupla ('CE', 2015, 12, 7.6, 29.0)
+    Retornar uma tupla ('CE', '2015', 12', '7.6', '29.0')
     """
     chave, dados = elemento
     chuva = dados['chuvas'][0]
     dengue = dados['dengue'][0]
     uf, ano, mes = chave.split('-')
 
-    return uf, int(ano), int(mes), chuva, dengue
+    return uf, ano, mes, str(chuva), str(dengue)
+
+def preparar_csv(elemento, delimitador= ';'):
+    """
+    Receber uma tupla ('CE', 2015, 12, 7.6, 29.0)
+    Retornar uma string delimitada "'CE';2015;12;7.6;29.0"
+    """
+    return f'{delimitador}'.join(elemento)
 
 pipeline_options = PipelineOptions(argv= None)   # Para receber as opções da Pipeline a ser utilizada
 pipeline= beam.Pipeline(options= pipeline_options)  # Criada a pipeline recebendo as opções anteriormente definidas
@@ -158,8 +165,11 @@ resultado = (
         beam.Filter(filtra_campos_vazios)
     | 'Descompactar elementos' >>
         beam.Map(descompactar_elementos)
+    | 'Preparar csv' >>
+        beam.Map(preparar_csv)
     | 'Mostrar resultados da uniao' >> 
         beam.Map(print)
+    
 )
 
 pipeline.run()
