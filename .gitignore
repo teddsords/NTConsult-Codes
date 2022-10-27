@@ -1,4 +1,6 @@
 chuvas.csv
+*.pem
+*.ppk
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
