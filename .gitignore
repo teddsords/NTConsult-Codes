@@ -1,4 +1,5 @@
 *.csv
+*.zip
 *.pem
 *.ppk
 # Byte-compiled / optimized / DLL files
