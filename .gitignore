@@ -1,5 +1,6 @@
 *.csv
 *.zip
+*.parquet
 *.pem
 *.ppk
 # Byte-compiled / optimized / DLL files
