@@ -1,0 +1,309 @@
+[
+{
+    "public_identifier": "paola-perez-5128b1230",
+    "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/paola-perez-5128b1230/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20230105%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20230105T183526Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b3e6ee1eed14c23179a61e12b58ae739278ffbcbdfc04290bb9156ac63a317dc",
+    "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/paola-perez-5128b1230/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20230105%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20230105T183526Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d516fd0246a5650a06696f7112e23398931b1cff099f578303e451505835cf72",
+    "first_name": "Paola",
+    "last_name": "Perez",
+    "full_name": "Paola Perez",
+    "occupation": "QA Trainee at NTConsult",
+    "headline": "QA Trainee, cursando An\u00e1lise e Desenvolvimento de Sistemas.",
+    "summary": "Atuo como QA Trainee, adquirindo mais e mais conhecimento t\u00e9cnico dia ap\u00f3s dia, sempre encarando novos desafios na inten\u00e7\u00e3o de desenvolver as minhas habilidades e me tornar uma Analista de Qualidade. \n\nDetermina\u00e7\u00e3o, curiosidade e a imensa vontade de aprender me movem para trilhar uma caminhada de sucesso, assim como a alegria em cada novo aprendizado me faz ter a certeza de que fiz a escolha certa quando decidi vir para \u00e1rea da TI.\n\nInicie minha vida profissional em 2014 e na maior parte das empresas em que ingressei atuei no contato direto com o p\u00fablico. Sempre tive proximidade com a \u00e1rea jur\u00eddica por atuar em escrit\u00f3rios de advocacia, sendo assim, iniciei o bacharelado em Direito e cursei at\u00e9 o terceiro semestre. \n\nEntretanto em 2021 a \u00e1rea da TI/QA me despertou um enorme interesse e me mostrou diversas possibilidades, ent\u00e3o iniciei o curso de ADS e dei in\u00edcio a minha transi\u00e7\u00e3o de carreira.",
+    "country": "BR",
+    "country_full_name": "Brazil",
+    "city": "Gua\u00edba",
+    "state": "Rio Grande do Sul",
+    "experiences": [
+        {
+            "starts_at": {
+                "day": 1,
+                "month": 1,
+                "year": 2022
+            },
+            "ends_at": null,
+            "company": "NTConsult",
+            "company_linkedin_profile_url": "https://br.linkedin.com/company/ntconsult",
+            "title": "QA Trainee",
+            "description": "- Testes manuais;\n- Testes funcionais;\n- Testes de integra\u00e7\u00e3o/UI;\n- API Rest;\n- Automa\u00e7\u00e3o de testes com Selenium(b\u00e1sico);\n- Utiliza\u00e7\u00e3o de Gherkin na elabora\u00e7\u00e3o de casos de teste;\n- Utiliza\u00e7\u00e3o do Jira para User Stories junto ao PO;\n- Confluence para documentar os cen\u00e1rios de teste;\n- Conhecimento b\u00e1sico em Banco de Dados(SQL);\n- Conhecimento em Metodologia \u00c1gil;\n- Conhecimento nas segrega\u00e7\u00f5es dos ambientes de DEV, HLG e PRD;\n- Contato b\u00e1sico com as ferramentas: AWS(Logs), Bitbucket, Camunda, Swagger e Postman.\n\nCursos realizados:\nQuality Assurance Plano de Testes e Gest\u00e3o de Bugs - Alura\nJava B\u00e1sico - Curso em V\u00eddeo\nPostgreSQL - Alura\nGit e Github Controle e Compartilhe Seu C\u00f3digo - Alura\nBDD e Java Behavior Driven Development com Cucumber - Alura\nSelenium: testes automatizados de aceita\u00e7\u00e3o em Java - Alura",
+            "location": "Porto Alegre, Rio Grande do Sul, Brasil",
+            "logo_url": "https://media.licdn.com/dms/image/C4D0BAQE0GEWpqBD3Bw/company-logo_100_100/0/1612217222252?e=2147483647&v=beta&t=Wgcyrd8_GM1lCVKqkpZ84huxluve5cnCgmXYOtzNcyU"
+        },
+        {
+            "starts_at": {
+                "day": 1,
+                "month": 1,
+                "year": 2021
+            },
+            "ends_at": {
+                "day": 31,
+                "month": 12,
+                "year": 2022
+            },
+            "company": "CFC-FLORA",
+            "company_linkedin_profile_url": "https://br.linkedin.com/company/cfcflora",
+            "title": "Assistente comercial",
+            "description": "Atendimento ao p\u00fablico em geral, respons\u00e1vel por toda parte te\u00f3rica (inclus\u00e3o da matr\u00edcula do aluno, agendamento de aulas, altera\u00e7\u00f5es de agenda, inclus\u00f5es e exclus\u00f5es de turmas no sistema). Contato direto com o suporte t\u00e9cnico para altera\u00e7\u00f5es e inclus\u00f5es necess\u00e1rio no sistema de gest\u00e3o das aulas.",
+            "location": "Gua\u00edba, Rio Grande do Sul, Brasil",
+            "logo_url": "https://media.licdn.com/dms/image/C4D0BAQE2tdAmwOUe5Q/company-logo_100_100/0/1573132902225?e=2147483647&v=beta&t=U7es-xwWJV8LagYb_CkNnbw8LfWSKRIuzA5jCIYxU_E"
+        },
+        {
+            "starts_at": {
+                "day": 1,
+                "month": 1,
+                "year": 2015
+            },
+            "ends_at": {
+                "day": 31,
+                "month": 12,
+                "year": 2018
+            },
+            "company": "CFC-FLORA",
+            "company_linkedin_profile_url": "https://br.linkedin.com/company/cfcflora",
+            "title": "Auxiliar administrativo",
+            "description": "Atendimento ao p\u00fablico em geral, realizando abertura do servi\u00e7o requisitado pelo cliente, inser\u00e7\u00e3o dos dados no sistema, elabora\u00e7\u00e3o de contratos.",
+            "location": "Gua\u00edba, Rio Grande do Sul/RS",
+            "logo_url": "https://media.licdn.com/dms/image/C4D0BAQE2tdAmwOUe5Q/company-logo_100_100/0/1573132902225?e=2147483647&v=beta&t=U7es-xwWJV8LagYb_CkNnbw8LfWSKRIuzA5jCIYxU_E"
+        },
+        {
+            "starts_at": {
+                "day": 1,
+                "month": 1,
+                "year": 2018
+            },
+            "ends_at": {
+                "day": 31,
+                "month": 12,
+                "year": 2021
+            },
+            "company": "Abreu \u2022 Almeida Advocacia",
+            "company_linkedin_profile_url": "https://br.linkedin.com/company/abreu-%E2%80%A2-almeida-advocacia",
+            "title": "Secret\u00e1ria executiva",
+            "description": "Suporte ao setor jur\u00eddico, controle de prazos e agendas. Elabora\u00e7\u00e3o de documentos administrativos/jur\u00eddicos. Acompanhamento de processos administrativos (INSS), cumprimento de exig\u00eancias. Aux\u00edlio ao cliente prestando informa\u00e7\u00f5es gerais relativas aos processos em andamento.",
+            "location": "Porto Alegre, Rio Grande do Sul, Brasil",
+            "logo_url": null
+        },
+        {
+            "starts_at": {
+                "day": 1,
+                "month": 1,
+                "year": 2014
+            },
+            "ends_at": {
+                "day": 31,
+                "month": 12,
+                "year": 2015
+            },
+            "company": "Acem Telecom",
+            "company_linkedin_profile_url": "https://br.linkedin.com/company/acem-telecom",
+            "title": "Assistente financeiro",
+            "description": "Elabora\u00e7\u00e3o de contrato de presta\u00e7\u00e3o de servi\u00e7o. Emiss\u00e3o de boletos de cobran\u00e7a e notas fiscais. Controle de faturamento (contras a pagar e receber).",
+            "location": "Porto Alegre, Rio Grande do Sul, Brasil",
+            "logo_url": "https://media.licdn.com/dms/image/C4E0BAQHaDpwtvfg4Mg/company-logo_100_100/0/1564495308927?e=2147483647&v=beta&t=1IRuXdKgKZtuxVvVzspFEWsN2JgukotfziGVZ3Dlqr8"
+        }
+    ],
+    "education": [
+        {
+            "starts_at": {
+                "day": 1,
+                "month": 1,
+                "year": 2022
+            },
+            "ends_at": null,
+            "field_of_study": "An\u00e1lise e Desenvolvimento de Sistemas",
+            "degree_name": "Curso Superior de Tecnologia (CST)",
+            "school": "ULBRA",
+            "school_linkedin_profile_url": "https://br.linkedin.com/school/ulbra/",
+            "description": null,
+            "logo_url": "https://media.licdn.com/dms/image/C4D0BAQFw6KIBkRywfw/company-logo_100_100/0/1660672076397?e=2147483647&v=beta&t=biAPbKYhl2LncZN_Y5TO0S374NItTONFaUMyQtGZkLY",
+            "grade": null,
+            "activities_and_societies": null
+        },
+        {
+            "starts_at": {
+                "day": 1,
+                "month": 1,
+                "year": 2019
+            },
+            "ends_at": {
+                "day": 31,
+                "month": 12,
+                "year": 2020
+            },
+            "field_of_study": "Direito",
+            "degree_name": "Bacharelado",
+            "school": "UniRitter",
+            "school_linkedin_profile_url": "https://br.linkedin.com/school/uniritter/",
+            "description": "Troca de curso efetuada em 2021/1.",
+            "logo_url": "https://media.licdn.com/dms/image/D4D0BAQEMgzlc38h0Cg/company-logo_100_100/0/1666013633044?e=2147483647&v=beta&t=l_tDFXmXfK3dFvsMNEIddFcaoxNNRmcBcNtujSIbrj8",
+            "grade": null,
+            "activities_and_societies": null
+        },
+        {
+            "starts_at": null,
+            "ends_at": null,
+            "field_of_study": "Administra\u00e7\u00e3o e Neg\u00f3cios",
+            "degree_name": "Ensino Secund\u00e1rio Profissional",
+            "school": "Senac RS",
+            "school_linkedin_profile_url": "https://br.linkedin.com/school/senac-rs/",
+            "description": "Administra\u00e7\u00e3o.",
+            "logo_url": "https://media.licdn.com/dms/image/C4D0BAQHN_FEbPNA_kg/company-logo_100_100/0/1672683850281?e=2147483647&v=beta&t=Z6RzSGElyVCb0LzBbU0ZOWCOyl4vOtB3L3hYRl21tTI",
+            "grade": null,
+            "activities_and_societies": null
+        }
+    ],
+    "languages": [],
+    "accomplishment_organisations": [],
+    "accomplishment_publications": [],
+    "accomplishment_honors_awards": [],
+    "accomplishment_patents": [],
+    "accomplishment_courses": [
+        {
+            "name": "BDD e Java Behavior Driven Development com Cucumber - Alura",
+            "number": "-"
+        },
+        {
+            "name": "Git e Github Controle e Compartilhe Seu C\u00f3digo - Alura",
+            "number": "-"
+        },
+        {
+            "name": "Java B\u00e1sico - Curso em V\u00eddeo",
+            "number": "-"
+        },
+        {
+            "name": "PostgreeSQL - Alura",
+            "number": "-"
+        },
+        {
+            "name": "Quality Assurance: Plano de Testes e Gest\u00e3o de Bugs - Alura",
+            "number": "-"
+        },
+        {
+            "name": "Selenium: testes automatizados de aceita\u00e7\u00e3o em Java - Alura",
+            "number": "-"
+        },
+        {
+            "name": "Compliance na era da tecnologia: dos desafios \u00e0s novas solu\u00e7\u00f5es - Linklei",
+            "number": "-"
+        },
+        {
+            "name": "Solu\u00e7\u00f5es \u00c1geis",
+            "number": "-"
+        },
+        {
+            "name": "INSS Digital - Escola Superior de Advocacia da OAB/RS",
+            "number": "-"
+        },
+        {
+            "name": "Qualidade no Atendimento ao Cliente - SEBRAE/RS",
+            "number": "-"
+        }
+    ],
+    "accomplishment_projects": [],
+    "accomplishment_test_scores": [],
+    "volunteer_work": [],
+    "certifications": [],
+    "connections": 199,
+    "people_also_viewed": [],
+    "recommendations": [],
+    "activities": [
+        {
+            "title": "Foto",
+            "link": "https://www.linkedin.com/posts/carolmartinsf_activity-6998594338775543808-x-E0",
+            "activity_status": "Paola Perez gostou"
+        }
+    ],
+    "similarly_named_profiles": [
+        {
+            "name": "Paola P\u00e9rez",
+            "link": "https://bo.linkedin.com/in/paola-p%C3%A9rez-07817542",
+            "summary": "Abogada - Periodista - Analista Internacional",
+            "location": "Bol\u00edvia"
+        },
+        {
+            "name": "Paola Perez",
+            "link": "https://fr.linkedin.com/in/paola-perez-coaching",
+            "summary": "Life & Business Mentor, Conf\u00e9renci\u00e8re & Formatrice,",
+            "location": "Montrouge"
+        },
+        {
+            "name": "Paola Perez",
+            "link": "https://ec.linkedin.com/in/paola-perez-196228a8",
+            "summary": "Ejecutivo comercial en Capitalis Ecuador -Lider en Implementaci\u00f3n ISO",
+            "location": "Distrito Metropolitano de Quito"
+        },
+        {
+            "name": "Paola P\u00e9rez",
+            "link": "https://co.linkedin.com/in/paola-p%C3%A9rez-93a88317a",
+            "summary": "Sourcing Specialist II en Fetcher",
+            "location": "Bogota, D.C."
+        },
+        {
+            "name": "Paola P\u00e9rez",
+            "link": "https://es.linkedin.com/in/itwomanworld",
+            "summary": "Tech | Public Policy  | Cybersecurity  | Human Rights | Gender Equality",
+            "location": "M\u00e1laga"
+        }
+    ],
+    "articles": [],
+    "groups": []
+},
+{
+    "public_identifier": "aguinaldo-silva-7617a1b7",
+    "profile_pic_url": null,
+    "background_cover_image_url": null,
+    "first_name": "aguinaldo",
+    "last_name": "silva",
+    "full_name": "aguinaldo silva",
+    "occupation": null,
+    "headline": null,
+    "summary": null,
+    "country": "BR",
+    "country_full_name": "brazil",
+    "city": "sao paulo",
+    "state": "sao paulo",
+    "experiences": [
+        {
+            "starts_at": null,
+            "ends_at": null,
+            "company": "aguidrina servi\u00e7os de informatica",
+            "company_linkedin_profile_url": null,
+            "title": null,
+            "description": null,
+            "location": null,
+            "logo_url": null
+        }
+    ],
+    "education": [
+        {
+            "starts_at": null,
+            "ends_at": null,
+            "field_of_study": null,
+            "degree_name": null,
+            "school": "universidade ibirapuera",
+            "school_linkedin_profile_url": null,
+            "description": null,
+            "logo_url": null,
+            "grade": null,
+            "activities_and_societies": null
+        }
+    ],
+    "languages": [],
+    "accomplishment_organisations": [],
+    "accomplishment_publications": [],
+    "accomplishment_honors_awards": [],
+    "accomplishment_patents": [],
+    "accomplishment_courses": [],
+    "accomplishment_projects": [],
+    "accomplishment_test_scores": [],
+    "volunteer_work": [],
+    "certifications": [],
+    "connections": null,
+    "people_also_viewed": [],
+    "recommendations": [],
+    "activities": [],
+    "similarly_named_profiles": [],
+    "articles": [],
+    "groups": []
+
+}
+]
