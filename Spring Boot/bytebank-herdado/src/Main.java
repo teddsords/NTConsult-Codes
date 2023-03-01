@@ -13,5 +13,7 @@ public class Main {
         System.out.println(g1.getSalario());
 
         System.out.println(g1.autentica(2222));
+
+        System.out.println(g1.getBonificacao());
     }
 }
