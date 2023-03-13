@@ -1,3 +1,4 @@
+package br.com.bytebank.banco.Modelo;
 public class ContaCorrente extends Conta implements Tributavel{
     
     public ContaCorrente(int agencia, int numero){

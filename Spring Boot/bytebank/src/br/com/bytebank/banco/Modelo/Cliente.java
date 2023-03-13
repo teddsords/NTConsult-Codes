@@ -1,3 +1,4 @@
+package br.com.bytebank.banco.Modelo;
 public class Cliente {
     private String nome;
     private String cpf;
